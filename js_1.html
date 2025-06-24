@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猜大小</title>
+</head>
+<body>
+    <div id="app">
+        <p id="result">请输入数字</p>
+        <input type="number" id="guessNum">
+        <button onclick="fn()">猜一猜</button>
+    </div>
+
+    <script>
+        // 生成1-100的随机数
+        const randomNum = Math.floor(Math.random() * 100) + 1;//Math.random()生成 0-1 之间的随机小数（不包含 1）。
+                                                              //* 100将范围扩大到 0-100（不包含 100）。
+                                                              //Math.floor()向下取整，得到 0-99 的整数。
+                                                              //+ 1将范围调整为 1-100（包含 1 和 100）。
+        
+        console.log('随机数:', randomNum);  //console.log()用于调试，在浏览器控制台显示随机数。
+
+        function fn() {
+            const guess = parseInt(document.getElementById('guessNum').value); //document.getElementById('guessNum')获取输入框元素。
+                                                                               //.value获取输入框内容，parseInt()将其转为整数（如输入 "10" 会转为数字 10）。
+            const resultEl = document.getElementById('result');
+
+            if (isNaN(guess)) {
+                resultEl.textContent = '请输入有效的数字';
+                return;
+            }//isNaN(guess)判断输入是否为非数字（如输入字母或空值）。
+             //若是非数字，显示提示并终止函数执行。
+
+            if (guess === randomNum) {
+                resultEl.textContent = '恭喜，猜对了！';
+            } else if (guess < randomNum) {
+                resultEl.textContent = '结果:小了';
+            } else {
+                resultEl.textContent = '结果:大了';
+            }
+        }
+    </script>
+</body>
+</html>
