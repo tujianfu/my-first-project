@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>显示与隐藏</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+    <div id="app" class="container">
+        <h3>显示与隐藏相关</h3>
+        <div v-if="isHidden" class="content">
+            <p>张学友</p>
+        </div>
+        <div v-else class="content">
+            <p>刘德华</p>
+            <p>郭富城</p>
+        </div>
+        <el-button type="primary" @click="fn">显示与隐藏</el-button>
+    </div>
+
+    <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <style>
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #dcdfe6;
+            border-radius: 4px;
+        }
+        .content {
+            margin: 15px 0;
+            padding: 10px;
+            border: 1px solid #ebeef5;
+            border-radius: 4px;
+        }
+    </style>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    isHidden: true // 初始为显示张学友
+                }
+            },
+            methods: {
+                fn() {
+                    // 切换显示状态
+                    this.isHidden = !this.isHidden;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

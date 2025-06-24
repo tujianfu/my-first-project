@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面定时跳转</title>
+</head>
+<body>
+    <div id="app">
+        <h3>页面定时跳转</h3>
+        <a href="#" id="cancelLink">如果想取消,点击这里</a>
+        <button id="jumpBtn">3s后打开新的页面</button>
+    </div>
+
+    <script>
+        let timer = null;
+        const targetUrl = 'http://www.gdpi.edu.cn';
+
+        function f1() {
+            const jumpBtn = document.getElementById('jumpBtn');
+            jumpBtn.disabled = true;
+            jumpBtn.textContent = '正在倒计时...';
+
+            // 设置3秒后跳转
+            timer = setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 3000);
+        }
+
+        function f2(e) {
+            e.preventDefault(); // 阻止默认跳转
+            if (timer) {
+                clearTimeout(timer); // 取消定时跳转
+                const jumpBtn = document.getElementById('jumpBtn');
+                jumpBtn.disabled = false;
+                jumpBtn.textContent = '3s后打开新的页面';
+            }
+        }
+
+        // 绑定事件
+        document.getElementById('jumpBtn').addEventListener('click', f1);
+        document.getElementById('cancelLink').addEventListener('click', f2);
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3的倍数计算</title>
+</head>
+<body>
+    <div id="app">
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function fn() {
+            const resultEl = document.getElementById('result');
+            const multiples = [];
+
+            // 遍历2到98的数字，收集3的倍数
+            for (let i = 2; i <= 98; i++) {
+                if (i % 3 === 0) {
+                    multiples.push(i);
+                }
+            }
+
+            // 输出结果
+            resultEl.textContent = multiples.join(', ');
+        }
+
+        // 页面加载时执行函数
+        window.onload = fn;
+    </script>
+</body>
+</html>
